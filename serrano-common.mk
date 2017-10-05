@@ -15,9 +15,6 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/serrano-common/serrano-common-vendor.mk)
-
 # Common overlay
 DEVICE_PACKAGE_OVERLAYS += device/samsung/serrano-common/overlay
 
@@ -83,10 +80,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
 
-# Eleven
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/Eleven.apk:system/app/Eleven/Eleven.apk
-
 # GPS/location security configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
@@ -130,25 +123,13 @@ PRODUCT_PACKAGES += \
     fsck.f2fs \
     mkfs.f2fs
 
-# RIL
-PRODUCT_PACKAGES += \
-    libril_shim
-
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
 
-# Camera
-PRODUCT_PACKAGES += \
-    Snap
-
 # Voice processing
 PRODUCT_PACKAGES += \
     libqcomvoiceprocessing
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # call common serrano system props
 $(call inherit-product, device/samsung/serrano-common/system_prop.mk)
