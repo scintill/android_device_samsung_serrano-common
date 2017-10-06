@@ -31,8 +31,6 @@ import init.target.rc
 import init.carrier.rc
 
 on init
-    export LD_SHIM_LIBS /system/lib/libril.so|libril_shim.so
-
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
@@ -233,6 +231,24 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag
+
+service dbus /system/bin/dbus-daemon --system --nofork
+    class main
+    socket dbus stream 0660 root radio
+    user radio
+    group radio
+
+service qmiserial2qmuxd /system/bin/qmiserial2qmuxd
+    class main
+    user radio
+    group radio
+
+service ofonod /system/bin/ofonod --nodetach --debug
+    class main
+    user radio
+    group radio
+    setenv OFONO_GOBI_DEVICE /data/misc/radio/qmiserial
+    setenv OFONO_QMI_DEBUG 1
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.

@@ -123,6 +123,16 @@ PRODUCT_PACKAGES += \
     fsck.f2fs \
     mkfs.f2fs
 
+# RIL
+PRODUCT_PACKAGES += \
+    ofonod \
+    qmiserial2qmuxd \
+    dbus-daemon \
+    RilOfono
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/dbus.conf:system/etc/dbus.conf
+
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
