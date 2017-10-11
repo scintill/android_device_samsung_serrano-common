@@ -78,6 +78,10 @@ TARGET_NEED_DISABLE_FACE_DETECTION_BOTH_CAMERAS := true
 
 # RIL
 BOARD_OFONO_DRIVER := gobi
+BOARD_RMTFS_PARTITION_TABLE := \
+	{ .path = "/boot/modem_fs1", .actual = "/dev/block/platform/msm_sdcc.1/by-name/modemst1" }, \
+	{ .path = "/boot/modem_fs2", .actual = "/dev/block/platform/msm_sdcc.1/by-name/modemst2" }, \
+	{ .path = "/boot/modem_fsg", .actual = "/dev/block/platform/msm_sdcc.1/by-name/fsg" },
 
 # CMHW
 BOARD_HARDWARE_CLASS += device/samsung/serrano-common/cmhw

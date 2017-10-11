@@ -125,6 +125,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    rmtfsd libqrtr \
     ofonod \
     qmiserial2qmuxd \
     dbus-daemon \

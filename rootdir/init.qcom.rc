@@ -213,6 +213,11 @@ service rmt_storage /system/bin/rmt_storage
     user root
     group system
 
+service rmtfsd /system/bin/rmtfsd -v
+    class core
+    user root
+    group system net_raw
+
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
