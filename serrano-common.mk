@@ -127,7 +127,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     rmtfsd libqrtr \
     ofonod \
-    qmiserial2qmuxd \
+    libsmdpkt_wrapper \
     dbus-daemon \
     RilOfono
 

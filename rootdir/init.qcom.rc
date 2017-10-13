@@ -243,16 +243,13 @@ service dbus /system/bin/dbus-daemon --system --nofork
     user radio
     group radio
 
-service qmiserial2qmuxd /system/bin/qmiserial2qmuxd
-    class main
-    user radio
-    group radio
-
 service ofonod /system/bin/ofonod --nodetach --debug
     class main
     user radio
     group radio
-    setenv OFONO_GOBI_DEVICE /data/misc/radio/qmiserial
+    setenv LD_PRELOAD libsmdpkt_wrapper.so
+    setenv OFONO_GOBI_DEVICE /dev/smdcntl0
+    setenv OFONO_GOBI_IFACE rmnet0
     setenv OFONO_QMI_DEBUG 1
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
